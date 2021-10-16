@@ -1,6 +1,6 @@
 {
   "name": "aqi-notifier-lambda-cdk",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -9,7 +9,8 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.121.0",
+    "@aws-cdk/assert": "^1.121.0",
+    "@types/aws-lambda": "^8.10.83",
     "@types/jest": "^26.0.10",
     "@types/node": "10.17.27",
     "jest": "^26.4.2",
@@ -17,9 +18,19 @@
     "typescript": "~3.9.7"
   },
   "peerDependencies": {
-    "@aws-cdk/core": "1.121.0"
+    "@aws-cdk/core": "^1.121.0",
+    "@aws-cdk/aws-lambda": "^1.121.0",
+    "@aws-cdk/aws-lambda-nodejs": "^1.121.0",
+    "@aws-cdk/aws-secretsmanager": "^1.121.0",
+    "@aws-cdk/aws-ssm": "^1.121.0"
   },
   "dependencies": {
-    "@aws-cdk/core": "1.121.0"
+    "@aws-cdk/core": "^1.121.0",
+    "@aws-cdk/aws-lambda": "^1.121.0",
+    "@aws-cdk/aws-lambda-nodejs": "^1.121.0",
+    "@aws-sdk/client-ssm": "^3.35.0",
+    "@aws-sdk/client-secrets-manager": "^3.35.0",
+    "axios": "^0.22.0",
+    "twilio": "^3.68.0"
   }
 }
