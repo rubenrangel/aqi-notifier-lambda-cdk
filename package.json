@@ -39,5 +39,8 @@
     "@aws-sdk/client-ssm": "^3.35.0",
     "axios": "^0.22.0",
     "twilio": "^3.68.0"
+  },
+  "engines": {
+    "node": "^14.18.1"
   }
 }
