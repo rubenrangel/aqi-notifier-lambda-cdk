@@ -4,6 +4,8 @@
 test
 jest.config.js
 tsconfig.json
+.eslintrc.js
+.prettierrc
 
 # CDK asset staging directory
 .cdk.staging
