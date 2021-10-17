@@ -22,11 +22,11 @@ export class EnvSecretsProvider implements SecretsProvider {
     return Promise.resolve(val);
   }
 
-  getAirNowApiKey(): Promise<string | undefined> {
+  getAirNowApiKey(): Promise<string> {
     return EnvSecretsProvider.getEnvVar(this.airNowApiTokenEnvName);
   }
 
-  getTwilioAuthToken(): Promise<string | undefined> {
+  getTwilioAuthToken(): Promise<string> {
     return EnvSecretsProvider.getEnvVar(this.twilioAuthTokenEnvName);
   }
 }

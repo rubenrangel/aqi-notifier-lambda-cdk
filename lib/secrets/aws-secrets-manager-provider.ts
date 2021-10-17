@@ -34,11 +34,11 @@ export class AwsSecretsManagerProvider implements SecretsProvider {
     return resp.SecretString;
   }
 
-  async getTwilioAuthToken() {
+  async getTwilioAuthToken(): Promise<string> {
     return this.getSecret(this.twilioAuthTokenKey);
   }
 
-  async getAirNowApiKey() {
+  async getAirNowApiKey(): Promise<string> {
     return this.getSecret(this.airNowApiTokenKey);
   }
 }
