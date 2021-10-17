@@ -2,7 +2,7 @@ import { ConfigProvider } from './config-provider';
 import { Parameter, SSM } from '@aws-sdk/client-ssm';
 
 export class AwsSsmConfigProvider implements ConfigProvider {
-  paramsCache: Parameter[];
+  private paramsCache: Parameter[] = [];
 
   /**
    * Instantiates the provider and loads secrets from SSM parameter store into an in-memory cache.
