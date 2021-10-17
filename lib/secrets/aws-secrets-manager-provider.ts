@@ -8,7 +8,7 @@ export class AwsSecretsManagerProvider implements SecretsProvider {
   /**
    * @param {string} twilioAuthTokenKey - SecretsManager key for the Twilio auth token
    * @param {string} airNowApiTokenKey - SecretsManager key for the AirNow api token
-   * @param client
+   * @param {SecretsManager} client
    */
   constructor(
     private readonly twilioAuthTokenKey: string,

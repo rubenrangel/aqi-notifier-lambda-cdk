@@ -1,16 +1,23 @@
 import { ScheduledHandler } from 'aws-lambda';
-import { AwsSsmConfig, EnvConfig, IConfig } from './config';
 import { AqiNotifier } from './aqi-notifier';
 import { EnvSecretsProvider } from './secrets/env-secrets-provider';
 import { SecretsProvider } from './secrets/secrets-provider';
+import { ConfigProvider } from './config/config-provider';
+import { EnvConfigProvider } from './config/env-config-provider';
+import { AwsSsmConfigProvider } from './config/aws-ssm-config-provider';
 
 // Cache config between runs.
-let config: IConfig;
+let config: ConfigProvider;
 
 if ('TWILIO_ACCOUNT_SID' in process.env) {
-  config = new EnvConfig();
+  config = new EnvConfigProvider('TWILIO_ACCOUNT_SID', 'TWILIO_FROM_PHONE_NUMBER', 'TO_PHONE_NUMBER', 'ZIP_CODE');
 } else {
-  config = new AwsSsmConfig();
+  config = new AwsSsmConfigProvider(
+    'TO_PHONE_NUMBER_PARAM_KEY',
+    'TWILIO_ACCOUNT_SID_PARAM_KEY',
+    'TWILIO_FROM_PHONE_NUMBER_PARAM_KEY',
+    'ZIP_CODE_PARAM_KEY'
+  );
 }
 
 export const handler: ScheduledHandler = async () => {

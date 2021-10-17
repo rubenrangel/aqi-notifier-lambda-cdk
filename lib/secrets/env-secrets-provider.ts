@@ -13,11 +13,13 @@ export class EnvSecretsProvider implements SecretsProvider {
    * @private
    */
   private static getEnvVar(name: string) {
-    if (!(name in process.env)) {
+    const val = process.env[name];
+
+    if (val === undefined) {
       throw new Error(`Environment variable \`${name}\` not found.`);
     }
 
-    return Promise.resolve(process.env[name]);
+    return Promise.resolve(val);
   }
 
   getAirNowApiKey(): Promise<string | undefined> {

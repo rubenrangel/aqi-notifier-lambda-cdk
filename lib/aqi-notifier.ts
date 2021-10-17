@@ -1,13 +1,13 @@
-import { IConfig } from './config';
 import { AirNow } from './airnow';
 import { Twilio } from 'twilio';
 import { SecretsProvider } from './secrets/secrets-provider';
+import { ConfigProvider } from './config/config-provider';
 
 export class AqiNotifier {
-  private readonly config: IConfig;
+  private readonly config: ConfigProvider;
   private readonly secrets: SecretsProvider;
 
-  constructor(config: IConfig, secrets: SecretsProvider) {
+  constructor(config: ConfigProvider, secrets: SecretsProvider) {
     this.config = config;
     this.secrets = secrets;
   }
