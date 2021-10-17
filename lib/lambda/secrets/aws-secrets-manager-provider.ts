@@ -28,7 +28,7 @@ export class AwsSecretsManagerProvider implements SecretsProvider {
     });
 
     if (resp.SecretString === undefined) {
-      throw new Error(`Secret with key ${key} not found.`);
+      return Promise.reject(`Secret with key \`${key}\` not found.`);
     }
 
     return resp.SecretString;

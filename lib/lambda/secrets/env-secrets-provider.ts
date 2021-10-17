@@ -18,7 +18,7 @@ export class EnvSecretsProvider implements SecretsProvider {
     const val = process.env[name];
 
     if (val === undefined) {
-      throw new Error(`Environment variable \`${name}\` not found.`);
+      return Promise.reject(`Environment variable \`${name}\` not found.`);
     }
 
     return Promise.resolve(val);
