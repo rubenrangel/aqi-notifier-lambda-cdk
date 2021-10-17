@@ -4,6 +4,9 @@ import * as SSM from '@aws-cdk/aws-ssm';
 import { ParameterType } from '@aws-cdk/aws-ssm';
 import * as SecretsManager from '@aws-cdk/aws-secretsmanager';
 
+/**
+ * Configuration for using ENV vars for AQI Notifier.
+ */
 export interface AqiEnvConfig {
   twilioAccountSid: string;
   twilioAuthToken: string;
@@ -13,7 +16,13 @@ export interface AqiEnvConfig {
   zipCode: string;
 }
 
+/**
+ * Configuration for using AWS SSM and SecretsManager for AQI Notifier.
+ */
 export interface AqiAwsConfig extends AqiEnvConfig {
+  /**
+   * Root prefix to use for params and secrets.
+   */
   paramAndSecretRoot: string;
 }
 
@@ -23,6 +32,9 @@ function getLambda(scope: cdk.Construct, environment: { [key: string]: string })
   });
 }
 
+/**
+ * Create an AQI Notifier Lambda driven by environment variables.
+ */
 export class EnvLambda extends cdk.Construct {
   public readonly lambda: lambda.NodejsFunction;
 
@@ -40,6 +52,9 @@ export class EnvLambda extends cdk.Construct {
   }
 }
 
+/**
+ * Create an AQI Notifier Lambda driven by SSM parameters and SecretsManager.
+ */
 export class AwsConfigLambda extends cdk.Construct {
   public readonly lambda: lambda.NodejsFunction;
 
