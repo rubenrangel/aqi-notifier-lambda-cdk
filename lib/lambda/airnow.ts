@@ -92,7 +92,7 @@ export class AirNow {
    * @see https://docs.airnowapi.org/CurrentObservationsByZip/docs
    */
   async getAqiForZipcode(zipcode: string): Promise<number> {
-    const data = await axios.get<Observation[]>(`${BASE_URL}/aq/observation/zipCode/current`, {
+    const response = await axios.get<Observation[]>(`${BASE_URL}/aq/observation/zipCode/current`, {
       params: {
         format: 'JSON',
         zipCode: zipcode,
@@ -100,6 +100,10 @@ export class AirNow {
       },
     });
 
-    return data.data[0].AQI;
+    if (response.data.length === 0) {
+      throw new Error(`No measurements found for zip code: ${zipcode}`);
+    }
+
+    return response.data[0].AQI;
   }
 }
