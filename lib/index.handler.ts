@@ -1,12 +1,12 @@
-import { ScheduledHandler } from 'aws-lambda';
-import { AqiNotifier } from './aqi-notifier';
-import { EnvSecretsProvider } from './secrets/env-secrets-provider';
-import { SecretsProvider } from './secrets/secrets-provider';
-import { ConfigProvider } from './config/config-provider';
-import { EnvConfigProvider } from './config/env-config-provider';
-import { AwsSsmConfigProvider } from './config/aws-ssm-config-provider';
+import { Handler } from 'aws-lambda';
+import { AqiNotifier } from './lambda/aqi-notifier';
+import { EnvSecretsProvider } from './lambda/secrets/env-secrets-provider';
+import { SecretsProvider } from './lambda/secrets/secrets-provider';
+import { ConfigProvider } from './lambda/config/config-provider';
+import { EnvConfigProvider } from './lambda/config/env-config-provider';
+import { AwsSsmConfigProvider } from './lambda/config/aws-ssm-config-provider';
 
-// Cache config between runs.
+// Cache config between Lambda runs.
 let config: ConfigProvider;
 
 if ('TWILIO_ACCOUNT_SID' in process.env) {
@@ -20,7 +20,7 @@ if ('TWILIO_ACCOUNT_SID' in process.env) {
   );
 }
 
-export const handler: ScheduledHandler = async () => {
+export const handler: Handler = async () => {
   const secrets: SecretsProvider = new EnvSecretsProvider('TWILIO_AUTH_TOKEN', 'OPEN_AIR_API_KEY');
   const aqiNotifier = new AqiNotifier(config, secrets);
   await aqiNotifier.notifyAqi();

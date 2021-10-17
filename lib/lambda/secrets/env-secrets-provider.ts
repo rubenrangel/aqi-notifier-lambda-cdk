@@ -2,6 +2,8 @@ import { SecretsProvider } from './secrets-provider';
 
 /**
  * A class that retrieves secrets for the application via environment variables.
+ *
+ * Provides an easy way to provide secrets for the application, but using a more secure process, such as AwsSecretsManagerProvider is recommended.
  */
 export class EnvSecretsProvider implements SecretsProvider {
   constructor(private readonly twilioAuthTokenEnvName: string, private readonly airNowApiTokenEnvName: string) {}
