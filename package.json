@@ -1,8 +1,24 @@
 {
   "name": "aqi-notifier-lambda-cdk",
   "version": "0.1.0",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "description": "An L3 AWS CDK construct to send AQI notifications via SMS.",
+  "keywords": [
+    "aws",
+    "cdk",
+    "constructs",
+    "aqi",
+    "lambda",
+    "ssm",
+    "secretsmanager"
+  ],
+  "bugs": "https://github.com/rubenrangel/aqi-notifier-lambda-cdk/issues",
+  "repository": "github:rubenrangel/aqi-notifier-lambda-cdk",
+  "author": {
+    "name": "Ruben Rangel",
+    "email": "rubenmrangel@gmail.com"
+  },
+  "main": "dist/lib/index.js",
+  "types": "dist/lib/index.d.ts",
   "scripts": {
     "build": "tsc --build --clean && tsc",
     "watch": "tsc -w",
