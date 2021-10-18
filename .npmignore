@@ -8,6 +8,8 @@ tsconfig.json
 .prettierrc
 .github
 coverage
+.nvmrc
+.travis.yml
 
 # CDK asset staging directory
 .cdk.staging
